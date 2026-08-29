@@ -40,30 +40,30 @@ export async function onRequestPost(context) {
     if (!env || !env.AI) {
       return new Response(
         JSON.stringify({
-          reply: Como consultor ejecutivo de EnKurso para tu negocio de ****, te sugiero enfocar este tema de "" en 3 pasos: 1) Diagnosticar tus cuellos de botella actuales con datos cuantitativos; 2) Probar un experimento piloto de bajo costo durante 7 días; 3) Estandarizar la solución en un checklist operativo para tu equipo.
+          reply: `Como consultor ejecutivo de EnKurso para tu negocio de **${userBusinessType}**, te sugiero enfocar este tema de "${bookTitle}" en 3 pasos: 1) Diagnosticar tus cuellos de botella actuales con datos cuantitativos; 2) Probar un experimento piloto de bajo costo durante 7 días; 3) Estandarizar la solución en un checklist operativo para tu equipo.`
         }),
         { headers: CORS_HEADERS }
       );
     }
 
-    const systemPrompt = Eres "Mentor EnKurso", un asesor de alto nivel y consultor de estrategia empresarial, finanzas y operaciones para directores, ejecutivos y emprendedores.
-Estás asesorando a un líder empresarial que está estudiando el libro/curso: "" (Categoría: , Capítulo activo: ).
-El sector o modelo de negocio del usuario es: "".
+    const systemPrompt = `Eres "Mentor EnKurso", un asesor de alto nivel y consultor de estrategia empresarial, finanzas y operaciones para directores, ejecutivos y emprendedores.
+Estás asesorando a un líder empresarial que está estudiando el libro/curso: "${bookTitle}" (Categoría: ${categoryName}, Capítulo activo: ${currentChapter}).
+El sector o modelo de negocio del usuario es: "${userBusinessType}".
 
 Directrices estrictas para tus respuestas:
 1. Extremadamente claras, prácticas, estructuradas y profesionales (en español neutro).
 2. Enfocadas en tácticas ejecutables de inmediato (utiliza pasos 1, 2, 3 o viñetas ejecutivas con indicadores medibles).
-3. Adapta siempre los ejemplos y métricas al sector de negocio del usuario ("").
-4. Tono: Mentor ejecutivo respetuoso, inspirador, directo y sin rodeos teóricos innecesarios. Mantén las respuestas en torno a 150-350 palabras para una lectura ágil en móviles.;
+3. Adapta siempre los ejemplos y métricas al sector de negocio del usuario ("${userBusinessType}").
+4. Tono: Mentor ejecutivo respetuoso, inspirador, directo y sin rodeos teóricos innecesarios. Mantén las respuestas en torno a 150-350 palabras para una lectura ágil en móviles.`;
 
     // Build message history
     const formattedHistory = [];
     if (Array.isArray(chatHistory)) {
       for (const msg of chatHistory.slice(-6)) {
-        if (msg.role && msg.content) {
+        if (msg && msg.role && msg.content) {
           formattedHistory.push({
             role: msg.role === 'user' ? 'user' : 'assistant',
-            content: msg.content,
+            content: String(msg.content),
           });
         }
       }
@@ -110,7 +110,7 @@ Directrices estrictas para tus respuestas:
     console.error('Error en Pages Function /api/mentor:', error);
     return new Response(
       JSON.stringify({
-        reply: Como consultor ejecutivo de EnKurso, te recomiendo enfocar este reto estructurando tu plan en 3 fases inmediatas: 1) Medir el impacto en margen y tiempo operativo; 2) Diseñar un protocolo simple de ejecución para 14 días; 3) Auditar los resultados semanales con tu equipo.
+        reply: 'Como consultor ejecutivo de EnKurso, te recomiendo enfocar este reto estructurando tu plan en 3 fases inmediatas: 1) Medir el impacto en margen y tiempo operativo; 2) Diseñar un protocolo simple de ejecución para 14 días; 3) Auditar los resultados semanales con tu equipo.'
       }),
       { headers: CORS_HEADERS }
     );

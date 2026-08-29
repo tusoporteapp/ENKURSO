@@ -25,18 +25,18 @@ export async function onRequestPost(context) {
     if (!env || !env.AI) {
       return new Response(
         JSON.stringify({
-          blueprint: Guía rápida para :\n1. Identifica el dolor de tus clientes más rentables.\n2. Lanza una oferta simple y mide el tiempo de respuesta.\n3. Monitorea el margen de contribución unitario.
+          blueprint: `Guía rápida para ${businessIndustry}:\n1. Identifica el dolor de tus clientes más rentables.\n2. Lanza una oferta simple y mide el tiempo de respuesta.\n3. Monitorea el margen de contribución unitario.`
         }),
         { headers: CORS_HEADERS }
       );
     }
 
-    const prompt = Adapta los principios del libro de negocios "" (Categoría: ) específicamente para el sector o industria: "".
+    const prompt = `Adapta los principios del libro de negocios "${bookTitle}" (Categoría: ${categoryName}) específicamente para el sector o industria: "${businessIndustry}".
 Genera un blueprint de implementación ejecutiva con 4 secciones cortas:
 1. Oportunidad Clave para este sector.
 2. 3 Acciones Prácticas Inmediatas (Paso 1, 2 y 3).
 3. Métrica Clave a vigilar (KPI principal).
-4. Trampa Específica del sector a evitar.;
+4. Trampa Específica del sector a evitar.`;
 
     const messages = [
       {
