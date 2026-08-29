@@ -6,7 +6,7 @@
   "id": "enkurso-app-v1",
   "display": "standalone",
   "background_color": "#09090b",
-  "theme_color": "#7c3aed",
+  "theme_color": "#4f46e5",
   "orientation": "portrait-primary",
   "categories": ["education", "business", "productivity", "books"],
   "icons": [
