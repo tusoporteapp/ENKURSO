@@ -15,11 +15,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="EnKurso" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
     <!-- Open Graph & Social -->
     <meta property="og:title" content="Enkurso - Biblioteca de Cursos de Negocios" />
-    <meta property="og:description" content="Plataforma de lectura y biblioteca digital ejecutiva con 24 categorías y más de 200 cursos empresariales estructurados en formato libro con mentor inteligente." />
+    <meta property="og:description" content="Plataforma de lectura y biblioteca digital ejecutiva con 24 categorías y 223 cursos empresariales estructurados en formato libro con mentor inteligente. Acceso 100% offline." />
     <meta property="og:url" content="https://enkurso.org/" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -28,10 +30,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Instrument+Serif:ital@0;1&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-CGo2FAZu.js"></script>
+    <script type="module" crossorigin src="/assets/index-CpGMhX8o.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CofEb886.css">
   </head>
   <body class="bg-stone-50 text-stone-900 antialiased selection:bg-indigo-500 selection:text-white">
     <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            .then(function(reg) {
+              console.log('[EnKurso] Modo Offline Activo. Service Worker registrado en:', reg.scope);
+            })
+            .catch(function(err) {
+              console.warn('[EnKurso] Advertencia Service Worker:', err);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
