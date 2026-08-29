@@ -1,0 +1,17 @@
+{
+  "name": "EnKurso - Libros y Cursos Ejecutivos",
+  "short_name": "EnKurso",
+  "description": "Biblioteca digital ejecutiva y cursos estructurados en formato libro con mentor inteligente.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
