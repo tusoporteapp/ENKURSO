@@ -8,8 +8,8 @@ export async function onRequestPost(context) {
   try {
     const data = await context.request.json().catch(() => ({}));
 
-    // Google Apps Script Webhook URL can be configured via environment variable or default fallback
-    const webhookUrl = context.env?.GOOGLE_SHEET_WEBHOOK_URL || '';
+    // Google Apps Script Webhook URL
+    const webhookUrl = context.env?.GOOGLE_SHEET_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbwAah9S4HhbdSCEC12AxAX-TEFEjuewqkvazxGTZ6apYnAONgGeze44pHxZLf0eR40/exec';
 
     const payload = {
       timestamp: new Date().toLocaleString('es-ES', { timeZone: 'America/Lima' }),
