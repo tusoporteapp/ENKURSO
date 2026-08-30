@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #F4F7FF;
+    color: #1E293B;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
+    -webkit-touch-callout: none;
+  }
+
+  html.dark body {
+    background-color: #0B0F19;
+    color: #F1F5F9;
+  }
+}
+
+/* Mobile Safe Areas and Touch Controls */
+.safe-top {
+  padding-top: constant(safe-area-inset-top, 0px);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.safe-bottom {
+  padding-bottom: constant(safe-area-inset-bottom, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-left {
+  padding-left: constant(safe-area-inset-left, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+.safe-right {
+  padding-right: constant(safe-area-inset-right, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+.safe-screen-top {
+  padding-top: max(16px, calc(env(safe-area-inset-top, 0px) + 12px));
+}
+
+.safe-screen-bottom {
+  padding-bottom: max(16px, calc(env(safe-area-inset-bottom, 0px) + 12px));
+}
+
+/* Native App Touch Feedback & 120fps Hardware-Accelerated Virtual Rendering */
+.native-touch-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 320px;
+  contain: layout style paint;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.native-touch-card:active {
+  transform: scale(0.97) translateZ(0);
+}
+
+.native-touch-btn {
+  transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.12s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.native-touch-btn:active {
+  transform: scale(0.95);
+  opacity: 0.85;
+}
+
+/* Hide scrollbars completely on touch scrolling lists */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Reader Typography Classes */
+.font-reader-serif {
+  font-family: 'Literata', Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+.font-reader-sans {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-reader-mono {
+  font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+}
+
+.font-display-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-display-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* Reader Themes */
+.theme-editorial {
+  background-color: #fbf9f5;
+  color: #2b2823;
+}
+
+.theme-sepia {
+  background-color: #f4ecd8;
+  color: #3b2f1f;
+}
+
+.theme-paper {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+.theme-dark {
+  background-color: #1e2124;
+  color: #e4e6eb;
+}
+
+.theme-midnight {
+  background-color: #0b0d10;
+  color: #cfd4dc;
+}
+
+/* 3D Book styling */
+.book-spine-effect {
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2) inset, 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-card-shadow {
+  box-shadow: 0 4px 20px -2px rgba(79, 70, 229, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .book-card-shadow {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4), 0 2px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.book-card-shadow:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px -6px rgba(79, 70, 229, 0.15), 0 8px 12px -4px rgba(0, 0, 0, 0.08);
+}
+
+.dark .book-card-shadow:hover {
+  box-shadow: 0 20px 30px -6px rgba(99, 102, 241, 0.2), 0 8px 12px -4px rgba(0, 0, 0, 0.4);
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.25);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.45);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.6);
+}
+
+/* Print Certificate Styling */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}

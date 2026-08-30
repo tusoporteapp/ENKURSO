@@ -1,0 +1,6 @@
+{
+  "name": "Enkurso - Biblioteca de Cursos de Negocios",
+  "description": "Plataforma de lectura y biblioteca digital ejecutiva con 24 categorías y más de 200 cursos empresariales estructurados en formato libro con mentor inteligente.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
